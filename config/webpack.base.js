@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HappyPack = require('happypack');
 const dir = path.join(__dirname, '..'); //拿到根目录 /Users/scc/draft4/react-boilerplate
 
 module.exports = {
@@ -20,11 +21,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', "@babel/preset-react"],
-            // plugins: ['react-hot-loader/babel'],
-          }
+          // loader: 'babel-loader',
+          loader: 'happypack/loader',
+          // options: {
+          // presets: ['@babel/preset-env', "@babel/preset-react"],
+          // plugins: ['react-hot-loader/babel'],
+          // }
         }
       },
       {
@@ -43,6 +45,14 @@ module.exports = {
     ]
   },
   plugins: [
+    new HappyPack({
+      loaders: [{
+        loader: 'babel-loader',
+        query: {
+          presets: ['@babel/preset-env', "@babel/preset-react"],
+        }
+      }],
+    }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.html'
