@@ -1,0 +1,28 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ShiChenCong/react-boilerplate.git",
+  "author": "shichencong <chencong.shi@geely.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config ./config/webpack.base.js"
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "express": "^4.16.3",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.2",
+    "webpack-merge": "^4.1.4"
+  }
+}
