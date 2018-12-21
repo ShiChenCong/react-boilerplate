@@ -8,17 +8,22 @@ const dir = path.join(__dirname, '..'); //拿到根目录 /Users/scc/draft4/reac
 module.exports = {
   mode: 'development',
   entry: {
-    app: ['webpack-hot-middleware/client?noInfo=true&reload=true', './src'],
+    app: ['webpack-hot-middleware/client?reload=true', './src'],
+    // app: './src',
   },
   output: {
     path: path.join(dir, 'build'),
     filename: 'js/[name].js',
     publicPath: '/',
   },
+  resolve: {
+    enforceExtension: false,
+    extensions: [".ts", ".tsx", ".js", ".jsx"]
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(tsx|ts)$/,
         exclude: /node_modules/,
         use: {
           // loader: 'babel-loader',
@@ -50,8 +55,10 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-env', "@babel/preset-react"],
-          plugins: [["@babel/plugin-proposal-decorators", { legacy: true }],
-            "@babel/plugin-proposal-class-properties"
+          plugins: [
+            ["@babel/plugin-proposal-decorators", { legacy: true }],
+            ["@babel/plugin-proposal-class-properties", { loose: true }],
+            ['@babel/plugin-transform-typescript', { isTSX: true }]
           ]
         }
       }],
